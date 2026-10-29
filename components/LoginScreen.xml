@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="LoginScreen" extends="Group">
+  <script type="text/brightscript" uri="LoginScreen.brs" />
+  <interface>
+    <field id="loginResult" type="assocarray" />
+  </interface>
+  <children>
+    <Label
+      id="titleLabel"
+      text="Trailers"
+      width="1280"
+      height="100"
+      translation="[0, 100]"
+      horizAlign="center"
+      vertAlign="center"
+      font="font:LargeBoldSystemFont"
+      textColor="0xFFFFFFFF"
+    />
+
+    <Label
+      id="usernamePrompt"
+      text="Username:"
+      translation="[300, 240]"
+      font="font:MediumSystemFont"
+      textColor="0xFFFFFFFF"
+    />
+
+    <Group
+      id="usernameGroup"
+      translation="[300, 270]"
+    >
+      <Rectangle
+        id="usernameBorder"
+        width="680"
+        height="50"
+        color="0x999999FF"
+        opacity="0"
+      />
+      <TextEditBox
+        id="usernameField"
+        translation="[0, 0]"
+        width="680"
+        height="50"
+        hintText="Enter username"
+        textColor="0x000000FF"
+        backgroundColor="0xFFFFFFFF"
+        focusable="false"
+      />
+    </Group>
+
+    <Label
+      id="passwordPrompt"
+      text="Password:"
+      translation="[300, 340]"
+      font="font:MediumSystemFont"
+      textColor="0xFFFFFFFF"
+    />
+
+    <Group
+      id="passwordGroup"
+      translation="[300, 370]"
+    >
+      <Rectangle
+        id="passwordBorder"
+        width="680"
+        height="50"
+        color="0x999999FF"
+        opacity="0"
+      />
+      <TextEditBox
+        id="passwordField"
+        translation="[0, 0]"
+        width="680"
+        height="50"
+        hintText="Enter password"
+        textColor="0x000000FF"
+        backgroundColor="0xFFFFFFFF"
+        secureMode="true"
+        focusable="false"
+      />
+    </Group>
+
+    <Group
+      id="loginButton"
+      translation="[300, 450]"
+    >
+      <Rectangle
+        id="loginButtonBackground"
+        width="680"
+        height="50"
+        color="0x5882E8FF"
+      />
+      <Label
+        id="loginButtonLabel"
+        text="LOGIN"
+        width="680"
+        height="50"
+        horizAlign="center"
+        vertAlign="center"
+        font="font:MediumBoldSystemFont"
+        textColor="0xFFFFFFFF"
+      />
+    </Group>
+
+    <Label
+      id="errorLabel"
+      text=""
+      translation="[300, 530]"
+      width="680"
+      font="font:SmallSystemFont"
+      textColor="0xFF0000FF"
+      visible="false"
+      wrap="true"
+    />
+  </children>
+</component>

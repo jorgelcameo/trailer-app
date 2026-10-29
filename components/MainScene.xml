@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="MainScene" extends="Scene">
+  <script type="text/brightscript" uri="MainScene.brs" />
+  <script type="text/brightscript" uri="ScreenStackLogic.brs" />
+  <script type="text/brightscript" uri="LoginLogic.brs" />
+  <script type="text/brightscript" uri="ContentTaskLogic.brs" />
+  <script type="text/brightscript" uri="GridScreenLogic.brs" />
+  <script type="text/brightscript" uri="VideoPlayerLogic.brs" />
+  <children>
+    <Overhang
+      id="overhang"
+      showOptions="false"
+      showClock="false"
+      logoUri="pkg:/images/hd_overhang_logo.png"
+      translation="[0,60]"
+    />
+    <Label
+      id="loadingIndicator"
+      text="Loading trailers..."
+      width="1280"
+      height="720"
+      translation="[0, 0]"
+      horizAlign="center"
+      vertAlign="center"
+      visible="false"
+      font="font:MediumBoldSystemFont"
+    />
+  </children>
+</component>

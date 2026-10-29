@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="GridScreen" extends="Group" initialFocus="RowList">
+  <script type="text/brightscript" uri="GridScreen.brs" />
+  <interface>
+    <field id="content" type="node" alias="RowList.content" />
+    <field id="rowItemSelected" type="intarray" alwaysnotify="true" alias="RowList.rowItemSelected" />
+    <field id="jumpToRowItem" type="intarray" alias="RowList.jumpToRowItem" />
+    <field id="LogoutPressed" type="boolean" alwaysnotify="true" />
+  </interface>
+  <children>
+    <Group
+      id="logoutButton"
+      translation="[1100, 20]"
+    >
+      <Rectangle
+        id="logoutButtonBackground"
+        width="150"
+        height="40"
+        color="0x5882E8FF"
+      />
+      <Label
+        id="logoutButtonLabel"
+        text="LOGOUT"
+        width="150"
+        height="40"
+        horizAlign="center"
+        vertAlign="center"
+        font="font:SmallBoldSystemFont"
+        textColor="0xFFFFFFFF"
+      />
+    </Group>
+    <Label
+      id="titleLabel"
+      width="1020"
+      translation="[130,170]"
+      font="font:MediumBoldSystemFont"
+      textColor="0xFFFFFFFF"
+    />
+    <Label
+      id="descriptionLabel"
+      wrap="true"
+      width="1020"
+      numLines="3"
+      translation="[130,220]"
+      font="font:SmallSystemFont"
+      textColor="0xCCCCCCFF"
+    />
+    <RowList
+      itemComponentName="RowListItemComponent"
+      id="rowList"
+      translation="[80,350]"
+      numRows="2"
+      rowitemSize="[[320,180]]"
+      rowItemSpacing="[[20,0]]"
+      itemSize="[1100,270]"
+      rowLabelOffset="[[50,20]]"
+      focusXOffset="[50]"
+      showRowLabel="[true]"
+      rowFocusAnimationStyle="floatingfocus"
+    />
+  </children>
+</component>
