@@ -1,6 +1,6 @@
 sub Init()
   m.top.functionName = "GetContent"
-  m.staticHost = "https://impeding-dwelling-sternness.ngrok-free.dev"
+  m.staticHost = "https://evjj5l2215.execute-api.us-east-2.amazonaws.com"
 end sub
 
 sub GetContent()
@@ -101,10 +101,6 @@ function GetTrailerData(trailer as Object) as Object
   end if
 
   item.contentType = "episode"
-
-  ' Add buffering/streaming hints for slow connections
-  item.switchingStrategy = "aggressive"
-  item.isxmlfile = false
 
   return item
 end function

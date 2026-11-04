@@ -26,17 +26,44 @@ sub ShowVideoScreen(content as Object, itemIndex as Integer)
   m.videoPlayer.enableCookies = true
   m.videoPlayer.showSubtitles = false
 
+  m.videoPlayer.ObserveField("state", "OnVideoPlayerStateChange")
+  m.videoPlayer.ObserveField("bufferingStatus", "OnVideoBufferingStatusChange")
+  m.videoPlayer.ObserveField("streamInfo", "OnVideoStreamInfoChange")
+
   ShowScreen(m.videoPlayer)
   m.videoPlayer.control = "play"
-  m.videoPlayer.ObserveField("state", "OnVideoPlayerStateChange")
   m.videoPlayer.ObserveField("visible", "OnVideoVisibleChange")
 end sub
 
 sub OnVideoPlayerStateChange()
   state = m.videoPlayer.state
+  print "Video state: "; state; " position="; m.videoPlayer.position
+  if state = "error"
+    print "Video error code: "; m.videoPlayer.errorCode
+    print "Video error msg: "; m.videoPlayer.errorMsg
+    print "Video error info: "; m.videoPlayer.errorInfo
+  end if
   if state = "error" or state = "finished"
     CloseScreen(m.videoPlayer)
   end if
+end sub
+
+' bufferingStatus is only valid while buffering; it becomes invalid when done
+sub OnVideoBufferingStatusChange()
+  status = m.videoPlayer.bufferingStatus
+  if status = invalid
+    print "Video buffering: done position="; m.videoPlayer.position
+    return
+  end if
+  print "Video buffering: "; status.percentage; "% underrun="; status.isUnderrun; " position="; m.videoPlayer.position
+end sub
+
+sub OnVideoStreamInfoChange()
+  info = m.videoPlayer.streamInfo
+  if info = invalid
+    return
+  end if
+  print "Video stream: measuredBitrate="; info.measuredBitrate; " streamBitrate="; info.streamBitrate; " underrun="; info.isUnderrun; " resume="; info.isResume
 end sub
 
 sub OnVideoVisibleChange()

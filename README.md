@@ -5,7 +5,7 @@ A Roku channel application that displays movie trailers fetched from the Trailer
 ## Features
 
 - ✅ Grid-based trailer display using RowList
-- ✅ Fetches trailers from API endpoint: `https://impeding-dwelling-sternness.ngrok-free.dev/trailers`
+- ✅ Fetches trailers from API endpoint: `https://evjj5l2215.execute-api.us-east-2.amazonaws.com/trailers`
 - ✅ Integrated video player with playlist support
 - ✅ Dynamic thumbnail loading from API
 - ✅ Back button navigation support
@@ -58,7 +58,7 @@ trailer-roku-app/
 
 The app fetches trailers from:
 ```
-https://impeding-dwelling-sternness.ngrok-free.dev/trailers
+https://evjj5l2215.execute-api.us-east-2.amazonaws.com/trailers
 ```
 
 Expected API response format:
@@ -122,7 +122,7 @@ The app maps API response fields to Roku ContentNode metadata:
 
 ### Trailers not loading
 - Check network connectivity
-- Verify ngrok tunnel is active and accessible
+- Verify the API is reachable: `curl -i https://evjj5l2215.execute-api.us-east-2.amazonaws.com/trailers` should return `401` without a token
 - Check device logs for API errors
 
 ### Video won't play

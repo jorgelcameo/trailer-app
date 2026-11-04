@@ -1,6 +1,6 @@
 sub Init()
   m.top.functionName = "DoLogin"
-  m.host = "https://impeding-dwelling-sternness.ngrok-free.dev"
+  m.host = "https://evjj5l2215.execute-api.us-east-2.amazonaws.com"
 end sub
 
 sub DoLogin()
@@ -11,12 +11,14 @@ sub DoLogin()
   xfer.InitClientCertificates()
   xfer.SetUrl(m.host + "/login")
   xfer.AddHeader("Content-Type", "application/x-www-form-urlencoded")
-  xfer.AddHeader("ngrok-skip-browser-warning", "true")
 
   ' Escape() so characters like & + = in the password don't break the body
   body = "username=" + xfer.Escape(m.top.username) + "&password=" + xfer.Escape(m.top.password)
 
+  print "Login: POST " + m.host + "/login"
+
   if not xfer.AsyncPostFromString(body)
+    print "Login: AsyncPostFromString failed"
     m.top.result = { success: false, error: "Can't reach the server. Try again." }
     return
   end if
@@ -24,13 +26,17 @@ sub DoLogin()
   msg = wait(10000, port)
 
   if type(msg) <> "roUrlEvent"
-    ' Timed out
+    print "Login: timed out after 10s"
     xfer.AsyncCancel()
     m.top.result = { success: false, error: "Can't reach the server. Try again." }
     return
   end if
 
   code = msg.GetResponseCode()
+  print "Login: response code " + code.ToStr()
+  if code < 0
+    print "Login: failure reason: " + msg.GetFailureReason()
+  end if
 
   if code = 200
     json = ParseJson(msg.GetString())
